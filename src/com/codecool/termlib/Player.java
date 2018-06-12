@@ -1,4 +1,5 @@
 package com.codecool.termlib;
+import java.util.Scanner;
 
 public class Player {
     private String name;
@@ -6,21 +7,23 @@ public class Player {
     private Board board;
 
     public boolean checkWin(){
-       return False;
+       return false;
     }
     public boolean shoot(int x, int y){
-        return False;
+        return false;
     }
     public void placeShip(){
 
     }
-    public void setName(String name){
 
+    public void setName(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("What's your name?");
+        this.name = scanner.nextLine();
     }
+
     public String getName(){
-
+        return this.name;
     }
-
-
 
 }
