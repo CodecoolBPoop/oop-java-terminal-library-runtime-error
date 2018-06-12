@@ -2,14 +2,27 @@ package com.codecool.termlib;
 
 public class Player {
     private String name;
-    private int sumShipHealth;
+    private int sumShipHealth = 0;
     private Board board;
 
     public boolean checkWin(){
-       return False;
+       return false;
     }
-    public boolean shoot(int x, int y){
-        return False;
+    public boolean shoot(){
+        int[] coordinates = board.getCoordinates();
+        int x = coordinates[0];
+        int y = coordinates[1];
+        if (this.board.board[x][y] > 1 ){
+            if (this.board.board[x][y] > 2){
+                System.out.print("Hit");
+                this.board.board[x][y] = 0;
+                return true;
+            } else {
+                System.out.print("Miss");
+                this.board.board[x][y] = 1;
+                return true;
+            }
+        return false;
     }
     public void placeShip(){
 
