@@ -6,6 +6,9 @@ public class Player {
     private Board board;
 
     public boolean checkWin(){
+       if (this.sumShipHealth == 0){
+           return true;
+       }
        return false;
     }
     public boolean shoot(){
