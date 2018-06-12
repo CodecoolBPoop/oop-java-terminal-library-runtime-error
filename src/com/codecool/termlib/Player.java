@@ -9,11 +9,16 @@ public class Player {
     public boolean checkWin(){
        return false;
     }
+
     public boolean shoot(int x, int y){
         return false;
     }
-    public void placeShip(){
 
+    public void placeShip(){
+        System.out.println("Set the starting position of your first ship");
+        int[] coordinates = board.getCoordinates();
+        int x = coordinates[0];
+        int y = coordinates[1];
     }
 
     public void setName(){
