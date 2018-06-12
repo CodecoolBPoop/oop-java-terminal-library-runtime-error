@@ -1,5 +1,7 @@
 package com.codecool.termlib;
 
+import java.util.Scanner;
+
 public class Board {
 
     int[][] board;
@@ -36,6 +38,27 @@ public class Board {
                 }
             }
             System.out.println();
+        }
+    }
+
+    public static int[] getCoordinates() {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.println("Please give a coordinate(e.g. A 1, a 1): ");
+            String[] coord = sc.nextLine().split("//s+");
+            if (coord.length == 2) {
+                try {
+                    int row = Integer.parseInt(coord[1]);
+                    int col = abc.indexOf(coord[0].toUpperCase());
+                    if (row <= 9 && row >= 0 && col <= 9 && col >= 0) {
+                        int[] returns = {row, col};
+                        return returns;
+                    }
+                } catch (Exception e) {
+                    continue;
+                }
+            }
+            System.out.println("Invalid coordinate");
         }
     }
 
