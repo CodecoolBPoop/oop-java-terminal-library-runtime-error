@@ -3,31 +3,33 @@ package com.codecool.termlib;
 public class Player {
     private String name;
     private int sumShipHealth = 0;
-    private Board board;
+    private Board board = new Board();
 
     public boolean checkWin() {
-        if (this.sumShipHealth == 0) {
-            return true;
-        }
-        return false;
+            return this.sumShipHealth == 0;
     }
 
     public boolean shoot() {
-        int[] coordinates = board.getCoordinates();
-        int x = coordinates[0];
-        int y = coordinates[1];
+        int x;
+        int y;
+        do {
+            int[] coordinates = board.getCoordinates();
+            x = coordinates[0];
+            y = coordinates[1];
+        }while(x<0 || y<0 || x>this.board.board.length || y>this.board.board.length);
         if (this.board.board[x][y] > 1) {
             if (this.board.board[x][y] > 2) {
                 System.out.print("Hit");
                 this.board.board[x][y] = 0;
-                return true;
+                this.sumShipHealth -= 1;
             } else {
                 System.out.print("Miss");
                 this.board.board[x][y] = 1;
-                return true;
             }
+            return true;
         }
         return false;
+
     }
 
     public void placeShip(){
@@ -37,9 +39,6 @@ public class Player {
 
     }
     public String getName(){
-
+        return this.name;
     }
-
-
-
 }
