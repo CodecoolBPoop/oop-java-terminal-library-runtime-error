@@ -5,14 +5,11 @@ import java.util.Scanner;
 public class Player {
     private String name;
     private int sumShipHealth = 0;
-    private Board playerBoard;
+    private Board playerBoard = new Board();
     private int shipID = 3;
 
     public boolean checkWin() {
-        if (this.sumShipHealth == 0) {
-            return true;
-        }
-        return false;
+            return this.sumShipHealth == 0;
     }
 
     public boolean shoot() {
@@ -23,12 +20,12 @@ public class Player {
             if (this.playerBoard.board[x][y] > 2) {
                 System.out.print("Hit");
                 this.playerBoard.board[x][y] = 0;
-                return true;
+                this.sumShipHealth -= 1;
             } else {
                 System.out.print("Miss");
                 this.playerBoard.board[x][y] = 1;
-                return true;
             }
+            return true;
         }
         return false;
     }
