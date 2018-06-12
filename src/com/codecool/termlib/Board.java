@@ -41,7 +41,7 @@ public class Board {
         }
     }
 
-    public static int[] getCoordinates() {
+    public int[] getCoordinates() {
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("Please give a coordinate(e.g. A 1, a 1): ");
