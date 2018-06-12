@@ -10,13 +10,9 @@ public class Player {
     }
 
     public boolean shoot() {
-        int x;
-        int y;
-        do {
-            int[] coordinates = board.getCoordinates();
-            x = coordinates[0];
-            y = coordinates[1];
-        }while(x<0 || y<0 || x>this.board.board.length || y>this.board.board.length);
+        int[] coordinates = board.getCoordinates();
+        int x = coordinates[0];
+        int y = coordinates[1];
         if (this.board.board[x][y] > 1) {
             if (this.board.board[x][y] > 2) {
                 System.out.print("Hit");
