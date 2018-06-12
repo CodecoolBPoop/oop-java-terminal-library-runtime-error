@@ -66,20 +66,21 @@ public class Player {
                     }
                 }
             }
+
+            if (direction == 'v' || direction == 'V') {
+                for (int i = 0; i < shipLength; i++) {
+                    this.playerBoard.board[x][y + i] = shipID;
+                }
+            } else {
+                for (int i = 0; i < shipLength; i++) {
+                    this.playerBoard.board[x + i][y] = shipID;
+                }
+            }
+
+            shipID++;
             break;
         }
 
-        if (direction == 'v' || direction == 'V') {
-            for (int i = 0; i < shipLength; i++) {
-                this.playerBoard.board[x][y + i] = shipID;
-            }
-        } else {
-            for (int i = 0; i < shipLength; i++) {
-                this.playerBoard.board[x + i][y] = shipID;
-            }
-        }
-
-        shipID++;
     }
 
     public void setName(){
