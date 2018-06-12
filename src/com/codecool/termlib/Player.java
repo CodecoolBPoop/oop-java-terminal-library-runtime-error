@@ -1,34 +1,45 @@
 package com.codecool.termlib;
-import java.util.Scanner;
 
 public class Player {
     private String name;
-    private int sumShipHealth;
+    private int sumShipHealth = 0;
     private Board board;
 
-    public boolean checkWin(){
-       return false;
+    public boolean checkWin() {
+        if (this.sumShipHealth == 0) {
+            return true;
+        }
+        return false;
     }
 
-    public boolean shoot(int x, int y){
+    public boolean shoot() {
+        int[] coordinates = board.getCoordinates();
+        int x = coordinates[0];
+        int y = coordinates[1];
+        if (this.board.board[x][y] > 1) {
+            if (this.board.board[x][y] > 2) {
+                System.out.print("Hit");
+                this.board.board[x][y] = 0;
+                return true;
+            } else {
+                System.out.print("Miss");
+                this.board.board[x][y] = 1;
+                return true;
+            }
+        }
         return false;
     }
 
     public void placeShip(){
-        System.out.println("Set the starting position of your first ship");
-        int[] coordinates = board.getCoordinates();
-        int x = coordinates[0];
-        int y = coordinates[1];
-    }
 
-    public void setName(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("What's your name?");
-        this.name = scanner.nextLine();
     }
+    public void setName(String name){
 
+    }
     public String getName(){
-        return this.name;
+
     }
+
+
 
 }
