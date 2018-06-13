@@ -2,17 +2,17 @@ package com.codecool.termlib;
 
 import java.util.Scanner;
 
-public class Player {
+class Player {
     private String name;
     private int sumShipHealth = 0;
     private Board playerBoard = new Board();
     private int shipID = 3;
 
-    public boolean checkWin() {
+    boolean checkWin() {
             return this.sumShipHealth == 0;
     }
 
-    public boolean shoot() {
+    boolean shoot() {
 
         int[] coordinates = playerBoard.getCoordinates();
         int x = coordinates[0];
@@ -31,7 +31,7 @@ public class Player {
         return false;
     }
 
-    public void placeShip(int shipLength) {
+    void placeShip(int shipLength) {
         checkStart:
         while (true) {
             playerBoard.displayBoard(true);
@@ -94,13 +94,13 @@ public class Player {
 
     }
 
-    public void setName(String forWho){
+    void setName(String forWho){
         Scanner scanner = new Scanner(System.in);
         System.out.printf("Set a name for player %s: ", forWho);
         this.name = scanner.nextLine();
     }
 
-    public String getName(){
+    String getName(){
         return this.name;
     }
 
