@@ -31,7 +31,7 @@ public class Player {
     }
 
     public void placeShip(int shipLength) {
-
+        checkStart:
         while (true) {
             playerBoard.displayBoard(true);
             int[] coordinates = playerBoard.getCoordinates();
@@ -39,39 +39,43 @@ public class Player {
             int y = coordinates[1];
             Scanner scanner = new Scanner(System.in);
             System.out.println("Declare orientation for the ship [h/v]:");
-            char direction = scanner.next().charAt(0);
+            char direction = Character.toUpperCase(scanner.next().charAt(0));
 
-            if (direction == 'v' || direction == 'V') {
-                if (y + shipLength >= this.playerBoard.board[x].length){
+            if (direction == 'V') {
+                if (y + shipLength >= this.playerBoard.board[x].length) {
                     System.out.println("That field is unavailable");
                     continue;
                 }
                 for (int i = 0; i < shipLength; i++) {
-                    if (this.playerBoard.board[x][y + i] != 2){
+                    if (this.playerBoard.board[x][y + i] != 2) {
                         System.out.println("That field is unavailable");
-                        continue;
+                        break checkStart;
                     }
                 }
             } else {
-                if (x + shipLength >= this.playerBoard.board[x].length){
+                if (x + shipLength >= this.playerBoard.board[x].length) {
                     System.out.println("That field is unavailable");
                     continue;
                 }
                 for (int i = 0; i < shipLength; i++) {
-                    if (this.playerBoard.board[x + i][y] != 2){
+                    if (this.playerBoard.board[x + i][y] != 2) {
                         System.out.println("That field is unavailable");
-                        continue;
+                        continue checkStart;
                     }
                 }
             }
 
-            if (direction == 'v' || direction == 'V') {
+
+            System.out.print(shipLength);
+            if (direction == 'V') {
                 for (int i = 0; i < shipLength; i++) {
-                    this.playerBoard.board[x][y + i] = shipID;
+                    System.out.print("hello");
+                    this.playerBoard.board[x][y + i] = this.shipID;
                 }
             } else {
                 for (int i = 0; i < shipLength; i++) {
-                    this.playerBoard.board[x + i][y] = shipID;
+                    System.out.print("hello");
+                    this.playerBoard.board[x + i][y] = this.shipID;
                 }
             }
 
