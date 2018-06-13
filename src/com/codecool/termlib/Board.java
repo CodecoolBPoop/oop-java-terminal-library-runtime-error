@@ -59,7 +59,7 @@ public class Board {
     int[] getCoordinates() {
         Scanner sc = new Scanner(System.in);
         while (true) {
-            System.out.println("Please give a coordinate(e.g. A1, a1): ");
+            System.out.print("Please provide coordinates(e.g. A1, a1): ");
             String input = sc.nextLine();
             try {
                 char inputLetter = Character.toUpperCase(input.charAt(0));
