@@ -38,8 +38,17 @@ public class Player {
             int x = coordinates[0];
             int y = coordinates[1];
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Declare orientation for the ship [h/v]:");
-            char direction = Character.toUpperCase(scanner.next().charAt(0));
+            String message = "Declare orientation for the ship [h/v]:";
+            char direction;
+
+            while (true) {
+                System.out.println(message);
+                direction = Character.toUpperCase(scanner.next().charAt(0));
+                if (direction == 'V' || direction == 'H') {
+                    break;
+                }
+                message = "You gave a non-valid orientation, please use 'h' or 'v'";
+            }
 
             if (direction == 'V') {
                 if (y + shipLength >= this.playerBoard.board[x].length) {
@@ -85,9 +94,9 @@ public class Player {
 
     }
 
-    public void setName(){
+    public void setName(String forWho){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("What's your name?");
+        System.out.printf("Set a name for player %s", forWho);
         this.name = scanner.nextLine();
     }
 
