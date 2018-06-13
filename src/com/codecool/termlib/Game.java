@@ -15,14 +15,14 @@ public class Game {
         }
         while(true){
             player2.displayBoardToEnemy();
-            player1.shoot();
+            player2.shoot();
             if (player1.checkWin()) {
                 System.out.print(player2.getName() + " Win");
                 break;
             }
 
             player1.displayBoardToEnemy();
-            player2.shoot();
+            player1.shoot();
             if (player2.checkWin()){
                 System.out.print(player1.getName() + " Win");
                 break;

@@ -96,6 +96,7 @@ class Player {
                     this.playerBoard.board[x + i][y] = this.shipID;
                 }
             }
+
             this.sumShipHealth += shipLength;
             shipID++;
             break;
