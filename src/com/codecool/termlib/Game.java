@@ -10,7 +10,7 @@ public class Game {
             player1.placeShip(ships[i]);
         }
         for (int i=0; i< ships.length; i++){
-            player2.placeShip(i);
+            player2.placeShip(ships[i]);
         }
         while(true){
             player1.shoot();
