@@ -33,7 +33,11 @@ public class Board {
             System.out.print(String.format("%1$2s", i + 1) + " ");
             for (int j = 0; j < board[i].length; j++) {
                 if (ownBoard) {
-                    System.out.print(board[i][j] + " ");
+                    if (board[i][j] == 2) {
+                        System.out.print(" ");
+                    } else {
+                        System.out.print("#");
+                    }
                 } else {
                     switch (board[i][j]) {
                         case 1:
@@ -43,10 +47,10 @@ public class Board {
                             System.out.print("-");
                             break;
                         default:
-                            System.out.print(board[i][j]);
+                            System.out.print(" ");
                     }
-                    System.out.print(" ");
                 }
+                System.out.print(" ");
             }
             System.out.println();
         }
