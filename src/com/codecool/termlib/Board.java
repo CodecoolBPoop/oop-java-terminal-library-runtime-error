@@ -10,11 +10,21 @@ public class Board {
     static private String [] abcArray = abc.trim().split(" ");
 
     Board() {
-        board = new int[10][10];
+        board = createBoard(10, 10);
     }
 
     public Board(int width, int height) {
-        board = new int[height][width];
+        board = createBoard(width, height);
+    }
+
+    private static int[][] createBoard(int width, int height) {
+        int[][] tempBoard = new int[width][height];
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                tempBoard[i][j] = 2;
+            }
+        }
+        return tempBoard;
     }
 
     void displayBoard(boolean ownBoard) {
