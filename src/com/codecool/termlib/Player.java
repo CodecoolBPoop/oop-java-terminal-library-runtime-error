@@ -43,7 +43,7 @@ public class Player {
             char direction = Character.toUpperCase(scanner.next().charAt(0));
 
             if (direction == 'H') {
-                if (y + shipLength >= this.playerBoard.board[x].length) {
+                if (y + shipLength > this.playerBoard.board[x].length) {
                     System.out.println("That field is unavailable");
                     continue;
                 }
@@ -54,7 +54,7 @@ public class Player {
                     }
                 }
             } else {
-                if (x + shipLength >= this.playerBoard.board[x].length) {
+                if (x + shipLength > this.playerBoard.board[x].length) {
                     System.out.println("That field is unavailable");
                     continue;
                 }
