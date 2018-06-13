@@ -2,6 +2,7 @@ package com.codecool.termlib;
 
 public class Game {
     public static void main(String[] args){
+        System.setProperty("apple.awt.fullscreenhidecursor","true");
         Player player1 = new Player();
         Player player2 = new Player();
         player1.setName("Player 1");
