@@ -13,22 +13,30 @@ public class Player {
     }
 
     public boolean shoot() {
-
         int[] coordinates = playerBoard.getCoordinates();
         int x = coordinates[0];
         int y = coordinates[1];
         if (this.playerBoard.board[x][y] > 1) {
             if (this.playerBoard.board[x][y] > 2) {
-                System.out.print("Hit");
+                System.out.println("Hit");
                 this.playerBoard.board[x][y] = 0;
                 this.sumShipHealth -= 1;
             } else {
-                System.out.print("Miss");
+                System.out.println("Miss");
                 this.playerBoard.board[x][y] = 1;
             }
             return true;
         }
         return false;
+    }
+
+    public void displayBoard(){
+        System.out.println("Own board: ");
+        this.playerBoard.displayBoard(true);
+    }
+    public void displayBoardToEnemy(){
+        System.out.println("Enemy board: ");
+        this.playerBoard.displayBoard(false);
     }
 
     public void placeShip(int shipLength) {
@@ -44,7 +52,7 @@ public class Player {
             char direction;
 
             while (true) {
-                System.out.println(message);
+                System.out.print(message);
                 direction = Character.toUpperCase(scanner.next().charAt(0));
                 if (direction == 'V' || direction == 'H') {
                     break;
@@ -86,7 +94,7 @@ public class Player {
                     this.playerBoard.board[x + i][y] = this.shipID;
                 }
             }
-
+            this.sumShipHealth += shipLength;
             shipID++;
             break;
         }
