@@ -41,7 +41,7 @@ public class Player {
             System.out.println("Declare orientation for the ship [h/v]:");
             char direction = Character.toUpperCase(scanner.next().charAt(0));
 
-            if (direction == 'V') {
+            if (direction == 'H') {
                 if (y + shipLength >= this.playerBoard.board[x].length) {
                     System.out.println("That field is unavailable");
                     continue;
@@ -67,7 +67,7 @@ public class Player {
 
 
             System.out.print(shipLength);
-            if (direction == 'V') {
+            if (direction == 'H') {
                 for (int i = 0; i < shipLength; i++) {
                     System.out.print("hello");
                     this.playerBoard.board[x][y + i] = this.shipID;
