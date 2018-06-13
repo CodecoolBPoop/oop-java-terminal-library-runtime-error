@@ -6,7 +6,7 @@ public class Game {
         Player player2 = new Player();
         player1.setName("Player 1");
         player2.setName("Player 2");
-        int[] ships = new int[] {5,4,3,3,2};
+        int[] ships = new int[] {3,2};
         for (int i=0; i< ships.length; i++){
             player1.placeShip(ships[i]);
         }
@@ -15,14 +15,14 @@ public class Game {
         }
         while(true){
             player2.displayBoardToEnemy();
-            player2.shoot();
+            while (!player2.shoot()){}
             if (player1.checkWin()) {
                 System.out.print(player2.getName() + " Win");
                 break;
             }
 
             player1.displayBoardToEnemy();
-            player1.shoot();
+            while (!player1.shoot()){}
             if (player2.checkWin()){
                 System.out.print(player1.getName() + " Win");
                 break;
