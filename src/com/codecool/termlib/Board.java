@@ -40,10 +40,10 @@ public class Board {
                     }
                 } else {
                     switch (board[i][j]) {
-                        case 1:
+                        case 0:
                             System.out.print("*");
                             break;
-                        case 2:
+                        case 1:
                             System.out.print("-");
                             break;
                         default:
