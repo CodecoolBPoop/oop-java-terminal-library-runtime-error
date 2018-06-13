@@ -13,6 +13,7 @@ public class Player {
     }
 
     public boolean shoot() {
+
         int[] coordinates = playerBoard.getCoordinates();
         int x = coordinates[0];
         int y = coordinates[1];
@@ -50,8 +51,8 @@ public class Player {
                 message = "You gave a non-valid orientation, please use 'h' or 'v'";
             }
 
-            if (direction == 'V') {
-                if (y + shipLength >= this.playerBoard.board[x].length) {
+            if (direction == 'H') {
+                if (y + shipLength > this.playerBoard.board[x].length) {
                     System.out.println("That field is unavailable");
                     continue;
                 }
@@ -62,7 +63,7 @@ public class Player {
                     }
                 }
             } else {
-                if (x + shipLength >= this.playerBoard.board[x].length) {
+                if (x + shipLength > this.playerBoard.board[x].length) {
                     System.out.println("That field is unavailable");
                     continue;
                 }
@@ -76,14 +77,12 @@ public class Player {
 
 
             System.out.print(shipLength);
-            if (direction == 'V') {
+            if (direction == 'H') {
                 for (int i = 0; i < shipLength; i++) {
-                    System.out.print("hello");
                     this.playerBoard.board[x][y + i] = this.shipID;
                 }
             } else {
                 for (int i = 0; i < shipLength; i++) {
-                    System.out.print("hello");
                     this.playerBoard.board[x + i][y] = this.shipID;
                 }
             }
