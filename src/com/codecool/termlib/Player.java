@@ -77,7 +77,6 @@ public class Player {
             }
 
 
-            System.out.print(shipLength);
             if (direction == 'H') {
                 for (int i = 0; i < shipLength; i++) {
                     this.playerBoard.board[x][y + i] = this.shipID;
