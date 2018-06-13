@@ -53,8 +53,6 @@ public class Board {
                     String inputStringLetter = String.valueOf(inputLetter);
                     int col = java.util.Arrays.asList(abcArray).indexOf(inputStringLetter);
                     int row = Character.getNumericValue(input.charAt(1));
-                    System.out.println(col);
-                    System.out.println(row);
                     if (row <= 9 && col <= 9) {
                         int[] returns = {row, col};
                         return returns;
