@@ -6,7 +6,7 @@ public class Board {
 
     int[][] board;
 
-    static private String abc = "  A B C D E F G H I J";
+    static private String abc = "   A B C D E F G H I J";
     static private String [] abcArray = abc.trim().split(" ");
 
     Board() {
@@ -30,7 +30,7 @@ public class Board {
     void displayBoard(boolean ownBoard) {
         System.out.println(abc);
         for (int i = 0; i < board.length; i++) {
-            System.out.print(i + " ");
+            System.out.print(String.format("%1$2s", i + 1) + " ");
             for (int j = 0; j < board[i].length; j++) {
                 if (ownBoard) {
                     System.out.print(board[i][j] + " ");
@@ -57,22 +57,16 @@ public class Board {
         while (true) {
             System.out.println("Please give a coordinate(e.g. A1, a1): ");
             String input = sc.nextLine();
-            if (input.length() == 2) {
-                try {
-                    char inputLetter = Character.toUpperCase(input.charAt(0));
-                    String inputStringLetter = String.valueOf(inputLetter);
-                    int col = java.util.Arrays.asList(abcArray).indexOf(inputStringLetter);
-                    int row = Character.getNumericValue(input.charAt(1));
-                    System.out.println(col);
-                    System.out.println(row);
-                    if (row <= 9 && col <= 9) {
-                        int[] returns = {row, col};
-                        return returns;
-                    }
-                } catch (Exception e) {
-                    continue;
+            try {
+                char inputLetter = Character.toUpperCase(input.charAt(0));
+                String inputStringLetter = String.valueOf(inputLetter);
+                int col = java.util.Arrays.asList(abcArray).indexOf(inputStringLetter);
+                int row = Integer.parseInt(input.substring(1)) - 1;
+                if (row <= 9 && row >= 0 && col <= 9 && col >= 0) {
+                    int[] returns = {row, col};
+                    return returns;
                 }
-            }
+            } catch (Exception e) {}
             System.out.println("Invalid coordinate");
         }
     }
