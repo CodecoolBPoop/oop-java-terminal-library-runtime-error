@@ -8,7 +8,7 @@ class Player {
     private Board playerBoard = new Board();
     private int shipID = 3;
 
-    boolean checkWin() {
+    boolean checkLose() {
             return this.sumShipHealth == 0;
     }
 
@@ -45,7 +45,7 @@ class Player {
         checkStart:
         while (true) {
             playerBoard.displayBoard(true);
-            System.out.printf("Ship placement with length: %d\n>> ", shipLength);
+            System.out.printf("%s's ship placement with length: %d\n>> ",this.getName(), shipLength);
             int[] coordinates = playerBoard.getCoordinates();
             int x = coordinates[0];
             int y = coordinates[1];
