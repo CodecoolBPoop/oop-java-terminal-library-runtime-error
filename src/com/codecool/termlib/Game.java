@@ -7,11 +7,11 @@ public class Game {
         player1.setName("Player 1");
         player2.setName("Player 2");
         int[] ships = new int[] {5, 4};
-        for (int i=0; i< ships.length; i++){
-            player1.placeShip(ships[i]);
+        for (int ship: ships){
+            player1.placeShip(ship);
         }
-        for (int i=0; i< ships.length; i++){
-            player2.placeShip(ships[i]);
+        for (int ship: ships){
+            player2.placeShip(ship);
         }
         while(true){
             player2.displayBoardToEnemy();

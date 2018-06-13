@@ -70,7 +70,7 @@ class Player {
                 for (int i = 0; i < shipLength; i++) {
                     if (this.playerBoard.board[x][y + i] != 2) {
                         System.out.println("That field is unavailable");
-                        break checkStart;
+                        continue checkStart;
                     }
                 }
             } else {
