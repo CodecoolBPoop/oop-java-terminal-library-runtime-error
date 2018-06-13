@@ -35,6 +35,7 @@ public class Player {
         checkStart:
         while (true) {
             playerBoard.displayBoard(true);
+            System.out.printf("Ship placement with length: %d\n>> ", shipLength);
             int[] coordinates = playerBoard.getCoordinates();
             int x = coordinates[0];
             int y = coordinates[1];
@@ -95,7 +96,7 @@ public class Player {
 
     public void setName(String forWho){
         Scanner scanner = new Scanner(System.in);
-        System.out.printf("Set a name for player %s", forWho);
+        System.out.printf("Set a name for player %s: ", forWho);
         this.name = scanner.nextLine();
     }
 
