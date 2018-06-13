@@ -33,6 +33,7 @@ public class Player {
     public void placeShip(int shipLength) {
 
         while (true) {
+            playerBoard.displayBoard(true);
             int[] coordinates = playerBoard.getCoordinates();
             int x = coordinates[0];
             int y = coordinates[1];
