@@ -38,15 +38,15 @@ class Player {
                     System.out.println("Hit");
                 this.playerBoard.board[x][y] = 0;
                 this.sumShipHealth -= 1;
-                return false;
+                return true;
             } else {
                 if (this.playerBoard.board[x][y] == 2){
                 System.out.println("Miss");
                 this.playerBoard.board[x][y] = 1;
-                return true;}
+                return false;}
             }
         } while (this.playerBoard.board[x][y] < 2);
-        return true;
+        return false;
     }
 
 

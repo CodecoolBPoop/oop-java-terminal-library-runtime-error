@@ -16,7 +16,7 @@ public class Game {
         game:
         while(true){
             System.out.print(player1.getName() + "'s turn\n");
-            while (!player2.shoot()){
+            while (player2.shoot()){
                 if (player2.checkLose()) {
                     System.out.print(player1.getName() + " Win");
                     break game;
@@ -24,7 +24,7 @@ public class Game {
             }
 
             System.out.print(player2.getName() + "'s turn\n");
-            while (!player1.shoot()){
+            while (player1.shoot()){
                 if (player1.checkLose()){
                     System.out.print(player2.getName() + " Win");
                     break game;
