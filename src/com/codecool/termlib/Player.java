@@ -12,8 +12,8 @@ class Player {
             return this.sumShipHealth == 0;
     }
 
-    boolean shoot() {
-
+    boolean shoot(Player opponent) {
+        opponent.displayBoardToEnemy();
         int[] coordinates;
         int x;
         int y;
@@ -25,16 +25,14 @@ class Player {
                 System.out.println("Hit");
                 this.playerBoard.board[x][y] = 0;
                 this.sumShipHealth -= 1;
-                return true;
+                return false;
             } else {
                 if (this.playerBoard.board[x][y] == 2)
                 System.out.println("Miss");
                 this.playerBoard.board[x][y] = 1;
-                return false;
+                return true;
             }
-
         } while (this.playerBoard.board[x][y] < 2);
-
     }
 
 
