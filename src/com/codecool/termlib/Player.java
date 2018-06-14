@@ -14,21 +14,27 @@ class Player {
 
     boolean shoot() {
 
-        int[] coordinates = playerBoard.getCoordinates();
-        int x = coordinates[0];
-        int y = coordinates[1];
-        if (this.playerBoard.board[x][y] > 1) {
+        int[] coordinates;
+        int x;
+        int y;
+        do {
+            coordinates = playerBoard.getCoordinates();
+            x = coordinates[0];
+            y = coordinates[1];
             if (this.playerBoard.board[x][y] > 2) {
                 System.out.println("Hit");
                 this.playerBoard.board[x][y] = 0;
                 this.sumShipHealth -= 1;
+                return true;
             } else {
+                if (this.playerBoard.board[x][y] == 2)
                 System.out.println("Miss");
                 this.playerBoard.board[x][y] = 1;
+                return false;
             }
-            return true;
-        }
-        return false;
+
+        } while (this.playerBoard.board[x][y] < 2);
+
     }
 
 
