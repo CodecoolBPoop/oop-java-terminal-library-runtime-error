@@ -26,7 +26,7 @@ class Player {
         int[] coordinates;
         int x;
         int y;
-        do {
+        while(true) {
             coordinates = playerBoard.getCoordinates();
             x = coordinates[0];
             y = coordinates[1];
@@ -40,13 +40,15 @@ class Player {
                 this.sumShipHealth -= 1;
                 return true;
             } else {
-                if (this.playerBoard.board[x][y] == 2){
-                System.out.println("Miss");
-                this.playerBoard.board[x][y] = 1;
-                return false;}
+                if (this.playerBoard.board[x][y] == 2) {
+                    System.out.println("Miss");
+                    this.playerBoard.board[x][y] = 1;
+                    return false;
+                } else {
+                    System.out.println("Invalid coordinates! The place is already fired!");
+                }
             }
-        } while (this.playerBoard.board[x][y] < 2);
-        return false;
+        }
     }
 
 
