@@ -1,120 +1,83 @@
 package com.codecool.termlib;
 
 public class Terminal {
-    /**
-     * The beginning of control sequences.
-     */
-    private static final String CONTROL_CODE = "\033[";
-    /**
-     * Command for whole screen clearing.
-     *
-     * Might be partitioned if needed.
-     */
-    private static final String CLEAR = "2J";
-    /**
-     * Command for moving the cursor.
-     */
-    private static final String MOVE = "H";
-    /**
-     * Command for printing style settings.
-     *
-     * Handles foreground color, background color, and any other
-     * styles, for example color brightness, or underlines.
-     */
-    private static final String STYLE = "m";
+    // Reset Color - without this after using a color it will remain.
+    public static final String RESET = "\033[0m";  // Text Reset
+
+    // Regular Colors
+    public static final String BLACK = "\033[0;30m";   // BLACK
+    public static final String RED = "\033[0;31m";     // RED
+    public static final String GREEN = "\033[0;32m";   // GREEN
+    public static final String YELLOW = "\033[0;33m";  // YELLOW
+    public static final String BLUE = "\033[0;34m";    // BLUE
+    public static final String PURPLE = "\033[0;35m";  // PURPLE
+    public static final String CYAN = "\033[0;36m";    // CYAN
+    public static final String WHITE = "\033[0;37m";   // WHITE
+
+    // Background Colors
+    public static final String BLACK_BACKGROUND = "\u001B[40m";
+    public static final String RED_BACKGROUND = "\u001B[41m";
+    public static final String GREEN_BACKGROUND = "\u001B[42m";
+    public static final String YELLOW_BACKGROUND = "\u001B[43m";
+    public static final String BLUE_BACKGROUND = "\u001B[44m";
+    public static final String PURPLE_BACKGROUND = "\u001B[45m";
+    public static final String CYAN_BACKGROUND = "\u001B[46m";
+    public static final String WHITE_BACKGROUND = "\u001B[47m";
 
     /**
-     * Reset printing rules in effect to terminal defaults.
-     *
-     * Reset the color, background color, and any other style
-     * (i.e.: underlined, dim, bright) to the terminal defaults.
+     * @param inputText The text which's background color should be set.
+     * @param color obj.[BLACK_BACKGROUND, RED_BACKGROUND, GREEN_BACKGROUND, YELLOW_BACKGROUND,
+     *              PURPLE_BACKGROUND, CYAN_BACKGROUND, WHITE_BACKGROUND, BLUE_BACKGROUND]
      */
-    public void resetStyle() {
+
+    String setBgColor(String inputText, String color) {
+        return color + inputText + RESET;
+    }
+
+    void clearConsole()
+    {
+        try
+        {
+            final String os = System.getProperty("os.name");
+
+            if (os.contains("Windows"))
+            {
+                Runtime.getRuntime().exec("cls");
+            }
+            else
+            {
+                Runtime.getRuntime().exec("clear");
+            }
+        }
+        catch (final Exception e)
+        {
+            //  Handle any exceptions.
+        }
+    }
+
+    void printLogo() {
+        System.out.println(" _           _   _   _           _     _       \n" +
+                "| |         | | | | | |         | |   (_)      \n" +
+                "| |__   __ _| |_| |_| | ___  ___| |__  _ _ __  \n" +
+                "| '_ \\ / _` | __| __| |/ _ \\/ __| '_ \\| | '_ \\ \n" +
+                "| |_) | (_| | |_| |_| |  __/\\__ \\ | | | | |_) |\n" +
+                "|_.__/ \\__,_|\\__|\\__|_|\\___||___/_| |_|_| .__/ \n" +
+                "                                        | |    \n" +
+                "                                        |_|    ");
     }
 
     /**
-     * Clear the whole screen.
-     *
-     * Might reset cursor position.
+     * @param inputText The text which's background color should be set.
+     * @param bgColor obj.[BLACK_BACKGROUND, RED_BACKGROUND, GREEN_BACKGROUND, YELLOW_BACKGROUND,
+     *              PURPLE_BACKGROUND, CYAN_BACKGROUND, WHITE_BACKGROUND, BLUE_BACKGROUND]
+     * @param textColor obj.[BLACK, RED, GREEN, YELLOW, PURPLE, CYAN, WHITE, BLUE]
      */
-    public void clearScreen() {
+
+    public String setBgAndTextColor(String inputText, String bgColor, String textColor) {
+        return bgColor + textColor + inputText + RESET;
     }
 
-    /**
-     * Move cursor to the given position.
-     *
-     * Positions are counted from one.  Cursor position 1,1 is at
-     * the top left corner of the screen.
-     *
-     * @param x Column number.
-     * @param y Row number.
-     */
-    public void moveTo(Integer x, Integer y) {
-    }
 
-    /**
-     * Set the foreground printing color.
-     *
-     * Already printed text is not affected.
-     *
-     * @param color The color to set.
-     */
-    public void setColor(Color color) {
-    }
 
-    /**
-     * Set the background printing color.
-     *
-     * Already printed text is not affected.
-     *
-     * @param color The background color to set.
-     */
-    public void setBgColor(Color color) {
-    }
 
-    /**
-     * Make printed text underlined.
-     *
-     * On some terminals this might produce slanted text instead of
-     * underlined.  Cannot be turned off without turning off colors as
-     * well.
-     */
-    public void setUnderline() {
-    }
-
-    /**
-     * Move the cursor relatively.
-     *
-     * Move the cursor amount from its current position in the given
-     * direction.
-     *
-     * @param direction Step the cursor in this direction.
-     * @param amount Step the cursor this many times.
-     */
-    public void moveCursor(Direction direction, Integer amount) {
-    }
-
-    /**
-     * Set the character diplayed under the current cursor position.
-     *
-     * The actual cursor position after calling this method is the
-     * same as beforehand.  This method is useful for drawing shapes
-     * (for example frame borders) with cursor movement.
-     *
-     * @param c the literal character to set for the current cursor
-     * position.
-     */
-    public void setChar(char c) {
-    }
-
-    /**
-     * Helper function for sending commands to the terminal.
-     *
-     * The common parts of different commands shall be assembled here.
-     * The actual printing shall be handled from this command.
-     *
-     * @param commandString The unique part of a command sequence.
-     */
-    private void command(String commandString) {
-    }
 }
