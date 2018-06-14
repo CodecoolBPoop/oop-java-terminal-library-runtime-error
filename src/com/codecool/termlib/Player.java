@@ -36,7 +36,7 @@ class Player {
         System.out.println("Own board: ");
         this.playerBoard.displayBoard(true);
     }
-    public void displayBoardToEnemy(){
+    void displayBoardToEnemy(){
         System.out.println("Enemy board: ");
         this.playerBoard.displayBoard(false);
     }

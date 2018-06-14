@@ -6,8 +6,8 @@ public class Board {
 
     int[][] board;
 
-    static private String abc = "    A   B   C   D   E   F   G   H   I   J";
-    static private String [] abcArray = abc.trim().split("   ");
+    static private String abc = "    A  B  C  D  E  F  G  H  I  J";
+    static private String [] abcArray = abc.trim().split("  ");
 
     Board() {
         board = createBoard(10, 10);
@@ -35,23 +35,22 @@ public class Board {
             for (int j = 0; j < board[i].length; j++) {
                 if (ownBoard) {
                     if (board[i][j] == 2) { // Displaying your own board
-                        System.out.print(color.setBgColor("   ", color.BLUE_BACKGROUND)); // Water
+                        System.out.print(color.setBgColor("   ", Terminal.BLUE_BACKGROUND)); // Water
                     } else {
-                        System.out.print(color.setBgColor("   ", color.BLACK_BACKGROUND)); // Own ship
+                        System.out.print(color.setBgColor("   ", Terminal.BLACK_BACKGROUND)); // Own ship
                     }
                 } else {
                     switch (board[i][j]) { // Displaying opponent's board
                         case 0:
-                            System.out.print(color.setBgColor(" * ", color.RED_BACKGROUND)); // Hit
+                            System.out.print(color.setBgColor(" * ", Terminal.RED_BACKGROUND)); // Hit
                             break;
                         case 1:
-                            System.out.print(color.setBgColor(" - ", color.WHITE_BACKGROUND)); // Miss
+                            System.out.print(color.setBgColor(" - ", Terminal.WHITE_BACKGROUND)); // Miss
                             break;
                         default:
-                            System.out.print(color.setBgColor("   ", color.BLUE_BACKGROUND)); // Hidden
+                            System.out.print(color.setBgColor("   ", Terminal.BLUE_BACKGROUND)); // Hidden
                     }
                 }
-                System.out.print(" ");
             }
             System.out.println();
         }
