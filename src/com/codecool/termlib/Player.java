@@ -19,7 +19,6 @@ class Player {
                 }
             }
         }
-
         return true;
     }
     boolean shoot() {
@@ -32,11 +31,12 @@ class Player {
             x = coordinates[0];
             y = coordinates[1];
             if (this.playerBoard.board[x][y] > 2) {
-                if(sunkship(this.playerBoard.board[x][y]))
+                int shotShipId = this.playerBoard.board[x][y];
+                this.playerBoard.board[x][y] = 0;
+                if(sunkship(shotShipId))
                     System.out.println("Hit and Sunk");
                 else
                     System.out.println("Hit");
-                this.playerBoard.board[x][y] = 0;
                 this.sumShipHealth -= 1;
                 return true;
             } else {
