@@ -13,21 +13,22 @@ public class Game {
         for (int ship: ships){
             player2.placeShip(ship);
         }
+        game:
         while(true){
-            player2.displayBoardToEnemy();
             System.out.print(player1.getName() + "'s turn\n");
-            while (!player2.shoot()){}
-            if (player2.checkLose()) {
-                System.out.print(player1.getName() + " Win");
-                break;
+            while (!player2.shoot()){
+                if (player2.checkLose()) {
+                    System.out.print(player1.getName() + " Win");
+                    break game;
+                }
             }
 
-            player1.displayBoardToEnemy();
-
             System.out.print(player2.getName() + "'s turn\n");
-            while (!player1.shoot()){}
-            if (player1.checkLose()){
-                System.out.print(player2.getName() + " Win");
+            while (!player1.shoot()){
+                if (player1.checkLose()){
+                    System.out.print(player2.getName() + " Win");
+                    break game;
+                }
             }
         }
     }

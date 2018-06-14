@@ -11,9 +11,19 @@ class Player {
     boolean checkLose() {
             return this.sumShipHealth == 0;
     }
+    boolean sunkship(int shipId) {
+        for (int[] row: this.playerBoard.board) {
+            for (int j: row){
+                if (j == shipId){
+                    return false;
+                }
+            }
+        }
 
-    boolean shoot(Player opponent) {
-        opponent.displayBoardToEnemy();
+        return true;
+    }
+    boolean shoot() {
+        this.displayBoardToEnemy();
         int[] coordinates;
         int x;
         int y;
@@ -22,17 +32,21 @@ class Player {
             x = coordinates[0];
             y = coordinates[1];
             if (this.playerBoard.board[x][y] > 2) {
-                System.out.println("Hit");
+                if(sunkship(this.playerBoard.board[x][y]))
+                    System.out.println("Hit and Sunk");
+                else
+                    System.out.println("Hit");
                 this.playerBoard.board[x][y] = 0;
                 this.sumShipHealth -= 1;
                 return false;
             } else {
-                if (this.playerBoard.board[x][y] == 2)
+                if (this.playerBoard.board[x][y] == 2){
                 System.out.println("Miss");
                 this.playerBoard.board[x][y] = 1;
-                return true;
+                return true;}
             }
         } while (this.playerBoard.board[x][y] < 2);
+        return true;
     }
 
 
